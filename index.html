@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitflex</title>
+    <link rel="stylesheet" href="fitflex.css">
+    <style>
+           body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:black;
+    color: #fff;
+    
+
+}
+.div1{
+    text-align: center;
+    text-shadow: -1px,1px,10px rgba(0,0,0,.6);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: xx-large;
+    color: red;
+}
+
+
+header {
+    background-color: #333;
+    color:red;
+    padding: 20px;
+    text-align: center;
+}
+
+section {
+    margin: 20px;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: red;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input, select {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#workoutList {
+    margin-bottom: 10px;
+}
+
+#workoutList div {
+    margin-bottom: 5px;
+}
+
+#progressGraph {
+    width: 100%;
+    height: 200px;
+    background-color: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+}
+footer{
+    background-color: aquamarine;
+}
+.slider{
+    height: 39rem;
+}
+.slider img{
+    width: 100%;
+    height: 100%;
+}
+#header{
+    color:#eee;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    
+   <!--Header(start)-->
+   <table id="header" border="0" width="100%"
+   cellpadding="0" cellspacing="0" bgcolor="black" >
+   <tr>
+       <td>
+           <table  id="table1" cellpadding="15" 
+               cellspacing="0" width="90%" align="center">
+               <tr  id="tr1">
+                   <td>
+                         
+
+                   </td>
+
+                   <td >
+                       <font face="Comic sans MS" size="6" >
+                           <b>FitFlex</b>
+                       </font>
+                   </td>
+
+                   <td width="15%">
+                         
+                   </td>
+
+                   <td >
+                       <a href="#home" style="text-decoration:none">
+                           <font face="Verdana" size="5" color=red>
+                               Home
+                           </font>
+                       </a>
+                   </td>
+
+                   <td>
+                       |
+                   </td>
+
+                   <td >
+                       <a href="about.html" style="text-decoration:none">
+                           <font face="Verdana" size="5" color=red>
+                               About
+                           </font>
+                       </a>
+                   </td>
+
+                   <td>
+                       |
+                   </td>
+
+                   <td >
+                       <a href="service" style="text-decoration:none">
+                           <font face="Verdana" size="5" color=red>
+                               Service
+                           </font>
+                       </a>
+                   </td>
+
+                   <td>
+                       |
+                   </td>
+
+                   <td >
+                       <a href="tracker.html" style="text-decoration:none">
+                           <font face="Verdana" size="5" color=red>
+                               tracker
+                           </font>
+                       </a>
+                   </td>
+
+                   <td>
+                       |
+                   </td>
+
+                   <td >
+                       <a href="coaching.html" style="text-decoration:none">
+                           <font face="Verdana" size="5" color=red>
+                               Fitcoach
+                           </font>
+                       </a>
+                   </td>
+               </tr>
+           </table>
+       </td>
+   </tr>
+</table>
+<!--Header(end)-->
+<div class="slider-container">
+    <div class="slider">
+      <img src="A.jpeg" alt="Image 1">
+      <img src="B.webp" alt="Image 2">
+      <img src="banner.jpg" alt="Image 3">
+      <img src="D.webp" alt="Image 4">
+    </div>
+    <button class="prev" onclick="prevSlide()">Previous</button>
+    <button class="next" onclick="nextSlide()">Next</button>
+  </div>
+<div class="div1">
+    Personalized Fitness Coaching
+</div>
+<section id="goals">
+    <h2>Set Your Goals</h2>
+    <form>
+        <label for="goalWeight">Goal Weight:</label>
+        <input type="number" id="goalWeight" placeholder="Enter goal weight in kg"><br>
+        <label for="goalDuration">Goal Duration:</label>
+        <input type="number" id="goalDuration" placeholder="Enter goal duration in weeks"><br>
+        <label for="goalActivity">Goal Activity:</label>
+        <select id="goalActivity">
+            <option value="cardio">Cardio</option>
+            <option value="strength">Strength Training</option>
+            <option value="flexibility">Flexibility</option>
+        </select><br>
+        <button type="submit">Set Goals</button>
+    </form>
+</section>
+
+<section id="workout">
+    <h2>Today's Workout</h2>
+    <div id="workoutList">
+        <!-- Workout items will be dynamically added here -->
+    </div>
+    <button id="addWorkoutBtn">Add Workout</button>
+</section>
+
+<section id="exerciseRoutines">
+    <h2>Personalized Exercise Routines</h2>
+    <p>Based on your goals and preferences, here are your personalized exercise routines:</p>
+    <ul>
+        <li>Cardio Routine: 30 minutes of running</li>
+        <li>Strength Routine: 3 sets of 10 reps of push-ups, squats, and lunges</li>
+        <li>Flexibility Routine: 15 minutes of yoga</li>
+    </ul>
+</section>
+
+<section id="progress">
+    <h2>Track Your Progress</h2>
+    <div id="progressGraph">
+        <!-- Progress graph will be dynamically generated here -->
+    </div>
+</section>
+<footer>
+    <table>
+        <tr>
+            <th>All copyright are mine....                            </th>
+            <th><a href="instagram">instagram</a> 
+            |</th>
+            <th><a href="youtube">youtube</a></th>
+        </tr>
+    </table>
+</footer>
+<script>
+    let slideIndex = 0;
+
+function showSlides() {
+  const slides = document.querySelectorAll('.slider img');
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = 'none';
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+  slides[slideIndex - 1].style.display = 'block';
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+
+function prevSlide() {
+  slideIndex--;
+  showSlides();
+}
+
+function nextSlide() {
+  slideIndex++;
+  showSlides();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  showSlides();
+});
+</script>
+
+
+</body>
+</html>

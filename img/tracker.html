@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image:url("chose.png");
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: black;
+    content-visibility: 5%;
+}
+
+header {
+    
+    color:red
+    padding: 20px;
+    text-align: center;
+    
+}
+
+section {
+    margin: 20px;
+    color: black;
+}
+h1{
+    color: #f00;
+
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#progressBar {
+    width: 100%;
+    background-color: #eee;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progressBar div {
+    height: 100%;
+}
+
+#cardioProgress {
+    background-color: #f00;
+}
+
+#strengthProgress {
+    background-color: #0f0;
+}
+
+#flexibilityProgress {
+    background-color: #00f;
+}
+
+    </style>
+
+</head>
+<body>
+    <!--Header(start)-->
+   <table id="header" border="0" width="100%"
+   cellpadding="0" cellspacing="0" bgcolor="black" >
+   <tr>
+       <td>
+           <table  id="table1" cellpadding="15" 
+               cellspacing="0" width="90%" align="center">
+               <tr  id="tr1">
+                   <td>
+                         
+
+                   </td>
+
+                   <td >
+                       <font face="Comic sans MS" size="6" >
+                           <b>FitFlex</b>
+                       </font>
+                   </td>
+
+                   <td width="15%">
+                         
+                   </td>
+
+                   <td >
+                       <a href="index.html" style="text-decoration:none">
+                           <font face="Verdana" size="5" color=red>
+                               Home
+                           </font>
+                       </a>
+                   </td>
+
+                   <td>
+                       |
+                   </td>
+
+                   <td >
+                       <a href="about.html" style="text-decoration:none">
+                           <font face="Verdana" size="5" color=red>
+                               About
+                           </font>
+                       </a>
+                   </td>
+
+                   <td>
+                       |
+                   </td>
+
+                   <td >
+                       <a href="service" style="text-decoration:none">
+                           <font face="Verdana" size="5" color=red>
+                               Service
+                           </font>
+                       </a>
+                   </td>
+
+                   <td>
+                       |
+                   </td>
+
+                   <td >
+                       <a href="tracker" style="text-decoration:none">
+                           <font face="Verdana" size="5" color=red>
+                               tracker
+                           </font>
+                       </a>
+                   </td>
+
+                   <td>
+                       |
+                   </td>
+
+                   <td >
+                       <a href="coaching.html" style="text-decoration:none">
+                           <font face="Verdana" size="5" color=red>
+                               Fitcoach
+                           </font>
+                       </a>
+                   </td>
+               </tr>
+           </table>
+       </td>
+   </tr>
+</table>
+<!--Header(end)-->
+    <header>
+        <h1>Fitness Tracker</h1>
+    </header>
+    
+    <section id="workout">
+        <h2>Today's Workout</h2>
+        <ul>
+            <li>Cardio: <input type="number" id="cardioInput" placeholder="minutes"></li>
+            <li>Strength: <input type="number" id="strengthInput" placeholder="minutes"></li>
+            <li>Flexibility: <input type="number" id="flexibilityInput" placeholder="minutes"></li>
+        </ul>
+        <button onclick="addWorkout()">Add Workout</button>
+    </section>
+    
+    <section id="goals">
+        <h2>Goals</h2>
+        <ul>
+            <li>Cardio: <span id="cardioGoal">30</span> minutes</li>
+            <li>Strength: <span id="strengthGoal">20</span> minutes</li>
+            <li>Flexibility: <span id="flexibilityGoal">15</span> minutes</li>
+        </ul>
+    </section>
+    
+    <section id="progress">
+        <h2>Progress</h2>
+        <div id="progressBar">
+            <div id="cardioProgress"></div>
+            <div id="strengthProgress"></div>
+            <div id="flexibilityProgress"></div>
+        </div>
+    </section>
+
+    <script >
+        function addWorkout() {
+    var cardio = parseInt(document.getElementById('cardioInput').value) || 0;
+    var strength = parseInt(document.getElementById('strengthInput').value) || 0;
+    var flexibility = parseInt(document.getElementById('flexibilityInput').value) || 0;
+
+    updateProgress('cardioProgress', cardio, parseInt(document.getElementById('cardioGoal').innerText));
+    updateProgress('strengthProgress', strength, parseInt(document.getElementById('strengthGoal').innerText));
+    updateProgress('flexibilityProgress', flexibility, parseInt(document.getElementById('flexibilityGoal').innerText));
+}
+
+function updateProgress(id, current, goal) {
+    var progressBar = document.getElementById(id);
+    var progress = (current / goal) * 100;
+    progressBar.style.width = progress + '%';
+}
+
+    </script>
+</body></html>
