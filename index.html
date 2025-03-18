@@ -27,7 +27,7 @@
 header {
     background-color: #333;
     color:red;
-    padding: 20px;
+   
     text-align: center;
 }
 
@@ -94,7 +94,23 @@ footer{
 #header{
     color:#eee;
 }
-
+#progressGraph {
+            width: 100%;
+            height: 30px;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        #progressBar {
+            height: 100%;
+            width: 0;
+            background-color: #4caf50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 5px 0 0 5px;
+        }
 
 
 
@@ -102,7 +118,7 @@ footer{
 </head>
 <body>
     
-   <!--Header(start)-->
+<header>
    <table id="header" border="0" width="100%"
    cellpadding="0" cellspacing="0" bgcolor="black" >
    <tr>
@@ -111,20 +127,14 @@ footer{
                cellspacing="0" width="90%" align="center">
                <tr  id="tr1">
                    <td>
-                         
-
                    </td>
-
                    <td >
                        <font face="Comic sans MS" size="6" >
                            <b>FitFlex</b>
                        </font>
                    </td>
-
-                   <td width="15%">
-                         
+                   <td width="15%"> 
                    </td>
-
                    <td >
                        <a href="#home" style="text-decoration:none">
                            <font face="Verdana" size="5" color=red>
@@ -138,7 +148,7 @@ footer{
                    </td>
 
                    <td >
-                       <a href="about.html" style="text-decoration:none">
+                       <a href="img/about.html" style="text-decoration:none">
                            <font face="Verdana" size="5" color=red>
                                About
                            </font>
@@ -150,7 +160,7 @@ footer{
                    </td>
 
                    <td >
-                       <a href="service" style="text-decoration:none">
+                       <a href="img/service" style="text-decoration:none">
                            <font face="Verdana" size="5" color=red>
                                Service
                            </font>
@@ -162,7 +172,7 @@ footer{
                    </td>
 
                    <td >
-                       <a href="tracker.html" style="text-decoration:none">
+                       <a href="img/tracker.html" style="text-decoration:none">
                            <font face="Verdana" size="5" color=red>
                                tracker
                            </font>
@@ -174,7 +184,7 @@ footer{
                    </td>
 
                    <td >
-                       <a href="coaching.html" style="text-decoration:none">
+                       <a href="img/coaching.html" style="text-decoration:none">
                            <font face="Verdana" size="5" color=red>
                                Fitcoach
                            </font>
@@ -185,13 +195,13 @@ footer{
        </td>
    </tr>
 </table>
-<!--Header(end)-->
+</header>
 <div class="slider-container">
     <div class="slider">
-      <img src="A.jpeg" alt="Image 1">
-      <img src="B.webp" alt="Image 2">
-      <img src="banner.jpg" alt="Image 3">
-      <img src="D.webp" alt="Image 4">
+      <img src="img/A.jpeg" alt="Image 1">
+      <img src="img/B.webp" alt="Image 2">
+      <img src="img/banner.jpg" alt="Image 3">
+      <img src="img/D.webp" alt="Image 4">
     </div>
     <button class="prev" onclick="prevSlide()">Previous</button>
     <button class="next" onclick="nextSlide()">Next</button>
@@ -239,6 +249,7 @@ footer{
     <div id="progressGraph">
         <!-- Progress graph will be dynamically generated here -->
     </div>
+    <button onclick="updateProgress()">Update Progress</button>
 </section>
 <footer>
     <table>
@@ -279,6 +290,52 @@ function nextSlide() {
 document.addEventListener('DOMContentLoaded', function() {
   showSlides();
 });
+const addWorkoutBtn = document.getElementById('addWorkoutBtn');
+        const workoutList = document.getElementById('workoutList');
+
+        // Function to add a new workout
+        function addWorkout() {
+            // Create a new div for the workout item
+            const newWorkout = document.createElement('div');
+            newWorkout.classList.add('workoutItem');
+
+            // Create input fields for the workout details
+            const workoutNameInput = document.createElement('input');
+            workoutNameInput.type = 'text';
+            workoutNameInput.placeholder = 'Workout Name';
+
+            const setsInput = document.createElement('input');
+            setsInput.type = 'number';
+            setsInput.placeholder = 'Sets';
+
+            const repsInput = document.createElement('input');
+            repsInput.type = 'number';
+            repsInput.placeholder = 'Reps';
+
+            // Append the input fields to the new workout div
+            newWorkout.appendChild(workoutNameInput);
+            newWorkout.appendChild(setsInput);
+            newWorkout.appendChild(repsInput);
+
+            // Add the new workout to the list
+            workoutList.appendChild(newWorkout);
+        }
+
+        // Add an event listener to the "Add Workout" button
+        addWorkoutBtn.addEventListener('click', addWorkout);
+
+        let currentProgress = 0;
+
+function updateProgress() {
+    if (currentProgress < 100) {
+        currentProgress += 10;  // Increase progress by 10
+        document.getElementById('progressBar').style.width = currentProgress + '%';
+        document.getElementById('progressBar').textContent = currentProgress + '%';
+    } else {
+        alert("Progress complete!");
+    }
+}
+
 </script>
 
 
